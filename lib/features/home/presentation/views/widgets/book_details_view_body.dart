@@ -3,6 +3,7 @@ import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart
 import 'package:bookly/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
+import 'books_action.dart';
 import 'custom_book_details_app_bar.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -27,9 +28,7 @@ class BookDetailsViewBody extends StatelessWidget {
           ),
           Text(
             'The Jungle Book',
-            style: Styles.textStyle30.copyWith(
-              fontWeight: FontWeight.w700
-            ),
+            style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w700),
           ),
           const SizedBox(
             height: 6,
@@ -49,7 +48,11 @@ class BookDetailsViewBody extends StatelessWidget {
           ),
           const BookRating(
             mainAxisAlignment: MainAxisAlignment.center,
-          )
+          ),
+          const SizedBox(
+            height: 37,
+          ),
+          const BooksAction(),
         ],
       ),
     );
