@@ -20,7 +20,6 @@ class SlidingText extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           );
-        }
-    );
+        });
   }
 }

@@ -60,7 +60,7 @@ class BookListViewItem extends StatelessWidget {
                   Text(
                     'J.K. Rowling',
                     style: Styles.textStyle14.copyWith(
-                        color: const Color(0xff707070),
+                      color: const Color(0xff707070),
                     ),
                   ),
                   const SizedBox(
@@ -87,4 +87,3 @@ class BookListViewItem extends StatelessWidget {
     );
   }
 }
-

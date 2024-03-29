@@ -5,8 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/splash/presentation/view/splash_view.dart';
 
-abstract class AppRouter{
-
+abstract class AppRouter {
   static const kHomeView = '/homeView';
   static const kBookDetailsView = '/bookDetailsView';
   static const kSearchView = '/searchView';
@@ -31,5 +30,4 @@ abstract class AppRouter{
       ),
     ],
   );
-
 }
