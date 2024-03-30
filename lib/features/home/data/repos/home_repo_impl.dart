@@ -38,12 +38,17 @@ class HomeRepoImpl extends HomeRepo {
     try {
       var data = await apiService.get(
         endPoint:
-            'volumes?Filtering=free-ebooks&q=subject:Programming&sorting=newest',
+            'volumes?Filtering=free-ebooks&sorting=newest&q=computer science',
       );
 
       List<BookModel> books = [];
       for(var item in data['items']){
-        books.add(BookModel.fromJson(item));
+        try {
+          books.add(BookModel.fromJson(item));
+        } on Exception catch (e) {
+          books.add(BookModel.fromJson(item));
+        }
+
       }
 
       return right(books);

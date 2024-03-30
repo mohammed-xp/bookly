@@ -13,12 +13,9 @@ class FeaturedBooksListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
       builder: (context, state) {
-        if (state is FeaturedBooksSuccess){
+        if (state is FeaturedBooksSuccess) {
           return SizedBox(
-            height: MediaQuery
-                .of(context)
-                .size
-                .height * .3,
+            height: MediaQuery.of(context).size.height * .3,
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
@@ -27,15 +24,17 @@ class FeaturedBooksListView extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(right: 16.0),
                   child: CustomBookImage(
-                    imageUrl: state.books[index].volumeInfo.imageLinks.thumbnail,
+                    imageUrl:
+                        state.books[index].volumeInfo.imageLinks?.thumbnail ??
+                            '',
                   ),
                 );
               },
             ),
           );
-        } else if (state is FeaturedBooksFailure){
+        } else if (state is FeaturedBooksFailure) {
           return CustomErrorWidget(errMessage: state.errMessage);
-        } else{
+        } else {
           return const CustomLoadingIndicator();
         }
       },

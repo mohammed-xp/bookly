@@ -16,6 +16,7 @@ class NewsBooksListView extends StatelessWidget {
         if(state is NewsBooksSuccess){
           return ListView.builder(
             padding: EdgeInsets.zero,
+            shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: state.books.length,
             itemBuilder: (context, index) {

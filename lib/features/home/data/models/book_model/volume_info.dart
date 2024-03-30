@@ -17,12 +17,12 @@ class VolumeInfo extends Equatable {
   final String? printType;
   final List<String>? categories;
   final num? averageRating;
-  final num? ratingsCount;
+  final int? ratingsCount;
   final String? maturityRating;
   final bool? allowAnonLogging;
   final String? contentVersion;
   final PanelizationSummary? panelizationSummary;
-  final ImageLinks imageLinks;
+  final ImageLinks? imageLinks;
   final String? language;
   final String? previewLink;
   final String? infoLink;
@@ -68,8 +68,9 @@ class VolumeInfo extends Equatable {
         pageCount: json['pageCount'] as int?,
         printType: json['printType'] as String?,
         categories: (json['categories'] as List<dynamic>?)?.cast<String>(),
-    averageRating: json['averageRating'] as num?,
-    ratingsCount: json['ratingsCount'] as num?,
+        averageRating: json['averageRating'],
+        // averageRating: json['averageRating'] is double ? json['averageRating']: (json['averageRating'] as int?)?.toDouble(),
+        ratingsCount: json['ratingsCount'] as int?,
         maturityRating: json['maturityRating'] as String?,
         allowAnonLogging: json['allowAnonLogging'] as bool?,
         contentVersion: json['contentVersion'] as String?,
@@ -77,7 +78,9 @@ class VolumeInfo extends Equatable {
             ? null
             : PanelizationSummary.fromJson(
                 json['panelizationSummary'] as Map<String, dynamic>),
-        imageLinks: ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
+        imageLinks: json['imageLinks'] == null
+            ? null
+            : ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
         language: json['language'] as String?,
         previewLink: json['previewLink'] as String?,
         infoLink: json['infoLink'] as String?,
@@ -97,7 +100,7 @@ class VolumeInfo extends Equatable {
         'printType': printType,
         'categories': categories,
         'averageRating': averageRating,
-    'ratingsCount': ratingsCount,
+        'ratingsCount': ratingsCount,
         'maturityRating': maturityRating,
         'allowAnonLogging': allowAnonLogging,
         'contentVersion': contentVersion,
