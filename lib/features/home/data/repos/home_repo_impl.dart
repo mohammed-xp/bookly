@@ -11,22 +11,21 @@ class HomeRepoImpl extends HomeRepo {
   HomeRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async{
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiService.get(
-        endPoint:
-        'volumes?Filtering=free-ebooks&q=subject:Programming',
+        endPoint: 'volumes?Filtering=free-ebooks&q=subject:Programming',
       );
 
       List<BookModel> books = [];
-      for(var item in data['items']){
+      for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
 
       return right(books);
     } catch (e) {
       /// Change DioError to DioException
-      if(e is DioError){
+      if (e is DioError) {
         return left(ServerFailure.fromDioError(e));
       }
       return left(ServerFailure(e.toString()));
@@ -42,19 +41,46 @@ class HomeRepoImpl extends HomeRepo {
       );
 
       List<BookModel> books = [];
-      for(var item in data['items']){
+      for (var item in data['items']) {
         try {
           books.add(BookModel.fromJson(item));
         } on Exception catch (e) {
           books.add(BookModel.fromJson(item));
         }
-
       }
 
       return right(books);
     } catch (e) {
       /// Change DioError to DioException
-      if(e is DioError){
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
+      {required String category}) async {
+    try {
+      var data = await apiService.get(
+        endPoint:
+            'volumes?Filtering=free-ebooks&sorting=relevance&q=$category',
+      );
+
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        try {
+          books.add(BookModel.fromJson(item));
+        } on Exception catch (e) {
+          books.add(BookModel.fromJson(item));
+        }
+      }
+
+      return right(books);
+    } catch (e) {
+      /// Change DioError to DioException
+      if (e is DioError) {
         return left(ServerFailure.fromDioError(e));
       }
       return left(ServerFailure(e.toString()));
