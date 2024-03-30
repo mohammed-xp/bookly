@@ -18,7 +18,9 @@ class BookDetailsSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: width * .2,
           ),
-          child: const CustomBookImage(),
+          child: const CustomBookImage(
+            imageUrl: 'https://www.noor-book.com/publice/covers_cache_webp/16/9/f/e/90e75f97039fe1f6fbea714b63475bc7.jpg.webp',
+          ),
         ),
         const SizedBox(
           height: 43,
