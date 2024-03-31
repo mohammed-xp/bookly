@@ -3,7 +3,7 @@ import 'package:bookly/features/home/presentation/manager/featured_book_cubit/fe
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'custom_book_image.dart';
-import 'loading_featured_books.dart';
+import 'loading_featured_books_list_view.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({super.key});
@@ -35,7 +35,7 @@ class FeaturedBooksListView extends StatelessWidget {
         } else if (state is FeaturedBooksFailure) {
           return CustomErrorWidget(errMessage: state.errMessage);
         } else {
-          return const LoadingFeaturedBooks();
+          return const LoadingFeaturedBooksListView();
         }
       },
     );

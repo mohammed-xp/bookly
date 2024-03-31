@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/widgets/shimmer_loading_base.dart';
+import 'loading_featured_books_list_view_item.dart';
 
-class LoadingFeaturedBooks extends StatelessWidget {
-  const LoadingFeaturedBooks({super.key});
+class LoadingFeaturedBooksListView extends StatelessWidget {
+  const LoadingFeaturedBooksListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +14,7 @@ class LoadingFeaturedBooks extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 5,
         itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsetsDirectional.only(end: 16.0),
-            child: AspectRatio(
-              aspectRatio: 2.7 / 4,
-              child: ShimmerLoadingBase(),
-            ),
-          );
+          return const LoadingFeaturedBooksListViewItem();
         },
       ),
     );
