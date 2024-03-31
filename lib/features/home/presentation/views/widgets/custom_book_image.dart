@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utils/assets.dart';
+import '../../../../../core/widgets/image_place_holder.dart';
 
 class CustomBookImage extends StatelessWidget {
   const CustomBookImage({super.key, required this.imageUrl});
@@ -16,9 +15,9 @@ class CustomBookImage extends StatelessWidget {
         aspectRatio: 2.7 / 4,
         child: CachedNetworkImage(
           imageUrl: imageUrl,
-          // placeholder: (context, url) {
-          //   return const Center(child: CircularProgressIndicator());
-          // },
+          placeholder: (context, url) {
+            return const ImagePlaceHolder();
+          },
           errorWidget: (context, url, error) {
             return const Icon(Icons.error_outline_rounded, size: 50,);
           },
