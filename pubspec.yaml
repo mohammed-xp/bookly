@@ -45,6 +45,7 @@ dependencies:
   get_it: ^7.6.7
   cached_network_image: ^3.3.1
   shimmer: ^3.0.0
+  url_launcher: ^6.2.4
 
 dev_dependencies:
   flutter_test:

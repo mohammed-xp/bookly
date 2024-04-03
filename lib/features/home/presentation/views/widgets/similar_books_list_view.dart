@@ -20,6 +20,7 @@ class SimilarBooksListView extends StatelessWidget {
               padding: EdgeInsets.zero,
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
+              itemCount: state.books.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsetsDirectional.only(end: 10.0),
