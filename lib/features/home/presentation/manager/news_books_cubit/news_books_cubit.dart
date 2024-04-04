@@ -2,8 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:bookly/features/home/data/repos/home_repo.dart';
 import 'package:meta/meta.dart';
 
-import '../../../data/models/book_model/book_model.dart';
-
+import '../../../../../core/utils/model/book_model/book_model.dart';
 part 'news_books_state.dart';
 
 class NewsBooksCubit extends Cubit<NewsBooksState> {

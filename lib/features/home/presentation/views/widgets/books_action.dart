@@ -1,6 +1,6 @@
 import 'package:bookly/core/utils/function/launch_url.dart';
-import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/utils/model/book_model/book_model.dart';
 import '../../../../../core/widgets/custom_button.dart';
 
 class BooksAction extends StatelessWidget {
