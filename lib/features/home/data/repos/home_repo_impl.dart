@@ -25,8 +25,7 @@ class HomeRepoImpl extends HomeRepo {
 
       return right(books);
     } catch (e) {
-      // TODO: Change DioError to DioException
-      if (e is DioError) {
+      if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
       return left(ServerFailure(e.toString()));
@@ -45,15 +44,14 @@ class HomeRepoImpl extends HomeRepo {
       for (var item in data['items']) {
         try {
           books.add(BookModel.fromJson(item));
-        } on Exception catch (e) {
+        } on Exception {
           books.add(BookModel.fromJson(item));
         }
       }
 
       return right(books);
     } catch (e) {
-      /// Change DioError to DioException
-      if (e is DioError) {
+      if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
       return left(ServerFailure(e.toString()));
@@ -73,15 +71,14 @@ class HomeRepoImpl extends HomeRepo {
       for (var item in data['items']) {
         try {
           books.add(BookModel.fromJson(item));
-        } on Exception catch (e) {
+        } on Exception {
           books.add(BookModel.fromJson(item));
         }
       }
 
       return right(books);
     } catch (e) {
-      /// Change DioError to DioException
-      if (e is DioError) {
+      if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
       return left(ServerFailure(e.toString()));
