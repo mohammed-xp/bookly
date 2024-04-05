@@ -43,7 +43,9 @@ class FeaturedBooksListView extends StatelessWidget {
             ),
           );
         } else if (state is FeaturedBooksFailure) {
-          return CustomErrorWidget(errMessage: state.errMessage);
+          return CustomErrorWidget(errMessage: state.errMessage, onPressed: () {
+            BlocProvider.of<FeaturedBooksCubit>(context).fetchFeaturedBooks();
+          },);
         } else {
           return const LoadingFeaturedBooksListView();
         }

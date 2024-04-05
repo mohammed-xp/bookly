@@ -29,7 +29,9 @@ class NewsBooksListView extends StatelessWidget {
             },
           );
         } else if (state is NewsBooksFailure) {
-          return CustomErrorWidget(errMessage: state.errMessage);
+          return CustomErrorWidget(errMessage: state.errMessage, onPressed: () {
+            BlocProvider.of<NewsBooksCubit>(context).fetchNewsBooks();
+          },);
         } else {
           return const LoadingNewsBooksListView();
         }

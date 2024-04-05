@@ -36,8 +36,8 @@ class Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SearchBooksCubit, SearchBooksState>(
-      builder: (context, state){
-        if(state is SearchBooksInitial) {
+      builder: (context, state) {
+        if (state is SearchBooksInitial) {
           return Expanded(
             child: Center(
               child: Text(
@@ -48,26 +48,26 @@ class Content extends StatelessWidget {
               ),
             ),
           );
-        } else if(state is SearchBooksSuccess) {
+        } else if (state is SearchBooksSuccess) {
           return Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Search Result',
-                style: Styles.textStyle18,
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Expanded(
-                  child: SearchResultListView(
-                books: state.books,
-              )),
-            ],
-        ),
+              children: [
+                const Text(
+                  'Search Result',
+                  style: Styles.textStyle18,
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Expanded(
+                    child: SearchResultListView(
+                  books: state.books,
+                )),
+              ],
+            ),
           );
-        } else if(state is SearchBooksEmpty){
+        } else if (state is SearchBooksEmpty) {
           return Expanded(
             child: Center(
               child: Text(
@@ -78,16 +78,19 @@ class Content extends StatelessWidget {
               ),
             ),
           );
-        } else if (state is SearchBooksFailure){
-          return CustomErrorWidget(errMessage: state.errMessage);
-        } else{
+        } else if (state is SearchBooksFailure) {
+          // TODO: build onPressed here correctly
+          return CustomErrorWidget(
+            errMessage: state.errMessage,
+            onPressed: null,
+          );
+        } else {
           return const Expanded(child: Center(child: CustomLoadingIndicator()));
         }
       },
     );
   }
 }
-
 
 class SearchResultListView extends StatelessWidget {
   const SearchResultListView({super.key, required this.books});
@@ -100,8 +103,9 @@ class SearchResultListView extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       itemCount: books.length,
       itemBuilder: (context, index) {
-        return  Padding(
+        return Padding(
           padding: const EdgeInsets.only(bottom: 20),
+
           /// Change here
           child: NewsBooksListViewItem(
             bookModel: books[index],
